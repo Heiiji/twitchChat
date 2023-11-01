@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import ChatView from './components/ChatView.vue'
+import ChatView from './components/ChatView/ChatView.vue'
 
 export default {
   name: 'App',
