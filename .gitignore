@@ -1,0 +1,23 @@
+# Dossiers à ignorer
+node_modules/
+.cache/
+public/uploads/ # Exemple de dossier de téléchargements
+
+# Fichiers à ignorer
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+.env.*.development
+.env.*.test
+.env.*.production
+.vscode/
+.idea/
+
+.DS_Store
