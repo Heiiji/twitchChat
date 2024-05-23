@@ -1,17 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <ChatView msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <ChatView msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
-import ChatView from './components/ChatView/ChatView.vue'
+import ChatView from "./components/ChatView/ChatView.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    ChatView
-  }
-}
+    ChatView,
+  },
+};
 </script>
 
 <style>

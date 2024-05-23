@@ -2,23 +2,29 @@
   <div>
     <h1>Chat Twitch</h1>
     <div class="chatBox">
-      <div class="message" v-for="(message, index) in chatMessages" :key="index">{{ message.username }}: <span v-html="message.message"/></div>
+      <div
+        class="message"
+        v-for="(message, index) in chatMessages"
+        :key="index"
+      >
+        {{ message.username }}: <span v-html="message.message" />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  @import "./index.scss"; //Here i add extra "./"(current directory)
+@import "./index.scss"; //Here i add extra "./"(current directory)
 </style>
 
 <script>
-import ComfyJS from 'comfy.js';
+import ComfyJS from "comfy.js";
 
 export default {
   data() {
     return {
       chatMessages: [],
-      channel: 'heiji_misaki', // Remplacez par le nom de la chaîne que vous souhaitez écouter
+      channel: "heiji_misaki", // Remplacez par le nom de la chaîne que vous souhaitez écouter
     };
   },
   mounted() {
@@ -39,7 +45,7 @@ export default {
         const [start, end] = position.split("-");
         const stringToReplace = message.substring(
           parseInt(start, 10),
-          parseInt(end, 10) + 1
+          parseInt(end, 10) + 1,
         );
 
         stringReplacements.push({
@@ -54,7 +60,7 @@ export default {
           // obs browser doesn't seam to know about replaceAll
           return acc.split(stringToReplace).join(replacement);
         },
-        message
+        message,
       );
     }
 
@@ -62,14 +68,16 @@ export default {
     ComfyJS.onChat = (user, message, flags, self, extra) => {
       // Ignorer les messages de l'auto-bot
       if (self) return;
-      const interpretedMessage = getMessageHTML(message, {emotes: extra.messageEmotes});
+      const interpretedMessage = getMessageHTML(message, {
+        emotes: extra.messageEmotes,
+      });
       console.log(user, message, flags, self, extra);
-      console.log('zzz', interpretedMessage)
+      console.log("zzz", interpretedMessage);
 
       // Ajouter le message au tableau des messages du chat
       this.chatMessages.push({
         username: `${user}`,
-        message: interpretedMessage
+        message: interpretedMessage,
       });
     };
   },
