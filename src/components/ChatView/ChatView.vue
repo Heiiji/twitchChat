@@ -1,6 +1,6 @@
 <template>
   <div class="chat-view">
-    <h1>Chat Twitch</h1>
+    <h1 class="header">Chat Twitch</h1>
     <div class="chatBox">
       <div v-for="(message, index) in chatMessages" :key="index">
         <MessageView
