@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       chatMessages: [],
-      channel: "heiji_misaki", // Remplacez par le nom de la chaîne que vous souhaitez écouter
+      channel: process.env.VUE_APP_TWITCH_CHANNEL,
     };
   },
   components: {

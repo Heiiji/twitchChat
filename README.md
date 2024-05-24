@@ -8,6 +8,12 @@ An occasion to experiment VueJS and twitch API
 npm install
 ```
 
+Needed variables in .env
+
+```
+TWITCH_CHANNEL=[Your_twitch_channel_name]
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
