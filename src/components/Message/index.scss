@@ -1,0 +1,9 @@
+.message {
+  background: linear-gradient(to bottom, rgb(247, 242, 232), rgb(217, 221, 236));
+  padding: 12px;
+  border-radius: 12px;
+
+  .pseudo {
+    font-weight: bold;
+  }
+}

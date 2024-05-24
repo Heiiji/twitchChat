@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="chat-view">
     <h1>Chat Twitch</h1>
     <div class="chatBox">
-      <div
-        class="message"
-        v-for="(message, index) in chatMessages"
-        :key="index"
-      >
-        {{ message.username }}: <span v-html="message.message" />
+      <div v-for="(message, index) in chatMessages" :key="index">
+        <MessageView
+          :message="message.message"
+          :username="message.username"
+          :userColor="message.userColor"
+        />
       </div>
     </div>
   </div>
@@ -19,6 +19,7 @@
 
 <script>
 import ComfyJS from "comfy.js";
+import MessageView from "../Message/MessageView.vue";
 
 export default {
   data() {
@@ -26,6 +27,9 @@ export default {
       chatMessages: [],
       channel: "heiji_misaki", // Remplacez par le nom de la chaîne que vous souhaitez écouter
     };
+  },
+  components: {
+    MessageView,
   },
   mounted() {
     ComfyJS.Init(this.channel);
@@ -71,14 +75,22 @@ export default {
       const interpretedMessage = getMessageHTML(message, {
         emotes: extra.messageEmotes,
       });
-      console.log(user, message, flags, self, extra);
+      console.log("user", user);
+      console.log("message", message);
+      console.log("flags", flags);
+      console.log("self", self);
+      console.log("extra", extra);
       console.log("zzz", interpretedMessage);
 
       // Ajouter le message au tableau des messages du chat
-      this.chatMessages.push({
-        username: `${user}`,
-        message: interpretedMessage,
-      });
+      if (!this.chatMessages.find((msg) => msg.id === user.id)) {
+        this.chatMessages.push({
+          username: `${user}`,
+          userColor: extra.userColor,
+          message: interpretedMessage,
+        });
+      }
+      console.log("this.chatMessages", this.chatMessages);
     };
   },
   beforeUnmount() {
